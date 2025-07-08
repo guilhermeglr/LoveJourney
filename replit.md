@@ -29,7 +29,8 @@ The application follows a modern full-stack architecture with clear separation b
 
 ### Backend Architecture
 - **Server**: Express.js with middleware for logging and error handling
-- **Storage**: Abstract storage interface with in-memory implementation
+- **Database**: PostgreSQL with Drizzle ORM for persistent data storage
+- **Storage**: Abstract storage interface with PostgreSQL implementation
 - **Development**: Hot reloading with Vite integration in development mode
 
 ### UI Components Structure
@@ -42,15 +43,20 @@ The application uses a comprehensive set of reusable UI components:
 ## Data Flow
 
 ### Current Implementation
-1. **Static Content**: Most content is hardcoded in React components
+1. **Dynamic Content**: All site content stored in PostgreSQL database with admin panel management
 2. **Theme Management**: Local storage persistence for user theme preferences
-3. **Countdown Logic**: Real-time calculations based on relationship start date
-4. **Image Carousel**: Unsplash API for romantic stock photography
+3. **Countdown Logic**: Real-time calculations based on relationship start date stored in database
+4. **Image Carousel**: Customizable through admin panel with persistent storage
+5. **Content Management**: Full CRUD operations for texts, images, quotes, memories, and music
 
 ### Database Schema
-- Basic user authentication schema is defined but not actively used
-- Schema includes users table with username/password fields
-- Drizzle ORM configured for PostgreSQL with Zod validation
+- **Users Table**: Basic user authentication schema with username/password fields
+- **Site Content Table**: Comprehensive content storage including:
+  - General information (title, subtitle, start date, WhatsApp number)
+  - Media content (images with captions, music details)
+  - Romantic content (love quotes, memory timeline)
+  - JSON fields for complex data structures
+- **Drizzle ORM**: Type-safe database operations with Zod validation
 
 ## External Dependencies
 
