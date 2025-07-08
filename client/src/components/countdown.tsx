@@ -1,7 +1,11 @@
 import { useCountdown } from '@/hooks/use-countdown';
 
-export function Countdown() {
-  const startDate = new Date('2019-07-08T00:00:00Z');
+interface CountdownProps {
+  startDate: string;
+}
+
+export function Countdown({ startDate: startDateString }: CountdownProps) {
+  const startDate = new Date(startDateString);
   const { years, months, days, hours, minutes, seconds } = useCountdown(startDate);
 
   return (

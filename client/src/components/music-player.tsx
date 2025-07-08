@@ -1,6 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 
-export function MusicPlayer() {
+interface MusicPlayerProps {
+  title: string;
+  artist: string;
+  musicFile?: string | null;
+}
+
+export function MusicPlayer({ title, artist, musicFile }: MusicPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -56,7 +62,7 @@ export function MusicPlayer() {
           <div className="mb-4">
             <i className="fas fa-heart text-red-400 text-4xl animate-pulse-heart"></i>
           </div>
-          <h3 className="font-semibold text-white mb-2">Perfect - Ed Sheeran</h3>
+          <h3 className="font-semibold text-white mb-2">{title} - {artist}</h3>
           <p className="text-white/80 text-sm mb-4">A música que toca sempre que penso em você</p>
           
           <div className="flex items-center justify-center space-x-4">
@@ -83,8 +89,7 @@ export function MusicPlayer() {
             preload="metadata"
             loop
           >
-            <source src="https://www.soundjay.com/misc/sounds/fail-buzzer-02.wav" type="audio/wav" />
-            {/* Note: Replace with actual romantic music file */}
+            {musicFile && <source src={musicFile} />}
           </audio>
         </div>
       </div>

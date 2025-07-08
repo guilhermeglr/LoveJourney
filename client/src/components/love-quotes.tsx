@@ -1,23 +1,19 @@
 import { useState, useEffect } from 'react';
 
-const loveQuotes = [
-  "Em todos os mundos, em todas as vidas, eu te escolheria novamente.",
-  "Você é a razão pela qual eu acredito no amor verdadeiro.",
-  "Meu coração é seu lar, e você sempre será bem-vinda.",
-  "Contigo, aprendi que o amor não tem fim, apenas recomeços.",
-  "Você é minha pessoa favorita em todos os universos possíveis."
-];
+interface LoveQuotesProps {
+  quotes: string[];
+}
 
-export function LoveQuotes() {
+export function LoveQuotes({ quotes }: LoveQuotesProps) {
   const [currentQuote, setCurrentQuote] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentQuote((prev) => (prev + 1) % loveQuotes.length);
+      setCurrentQuote((prev) => (prev + 1) % quotes.length);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [quotes.length]);
 
   return (
     <section className="px-4 mb-12">
@@ -29,10 +25,10 @@ export function LoveQuotes() {
         
         <div className="text-center">
           <blockquote className="font-dancing text-xl sm:text-2xl text-white/90 italic mb-4 min-h-[60px] flex items-center justify-center">
-            {loveQuotes[currentQuote]}
+            {quotes[currentQuote]}
           </blockquote>
           <div className="flex justify-center space-x-2">
-            {loveQuotes.map((_, index) => (
+            {quotes.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentQuote(index)}

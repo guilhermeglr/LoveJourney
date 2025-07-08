@@ -1,39 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 
-const images = [
-  {
-    src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Nosso primeiro encontro",
-    caption: "8 de Julho, 2019 - O dia que mudou nossas vidas"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Dançando juntos",
-    caption: "Cada dança é uma nova canção de amor"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Caminhando na praia",
-    caption: "Passos na areia, corações unidos"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Em jardim florido",
-    caption: "Onde flores crescem, nosso amor floresce"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1523464862212-d6631d073194?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Rindo juntos",
-    caption: "Seu sorriso é a minha felicidade"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    alt: "Guilherme e Carolina - Na montanha ao pôr do sol",
-    caption: "Juntos podemos alcançar qualquer altura"
-  }
-];
+interface PhotoCarouselProps {
+  images: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+  }>;
+}
 
-export function PhotoCarousel() {
+export function PhotoCarousel({ images }: PhotoCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const touchStartX = useRef(0);

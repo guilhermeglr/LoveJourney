@@ -1,6 +1,10 @@
-export function SocialSharing() {
+interface SocialSharingProps {
+  whatsappNumber: string;
+}
+
+export function SocialSharing({ whatsappNumber }: SocialSharingProps) {
   const setupWhatsApp = () => {
-    const numero = '47999471966';
+    const numero = whatsappNumber;
     const urlApp = window.location.href;
     const mensagemTexto = `Oi vida, criei este app para não deixar passar em branco. 💖✨ Veja com carinho aqui: ${urlApp}`;
     const mensagem = encodeURIComponent(mensagemTexto);

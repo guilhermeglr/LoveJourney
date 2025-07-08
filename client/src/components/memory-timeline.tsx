@@ -1,27 +1,14 @@
-export function MemoryTimeline() {
-  const memories = [
-    {
-      icon: "fas fa-heart",
-      iconColor: "bg-red-500",
-      title: "Primeiro Encontro",
-      description: "8 de Julho, 2019 - O dia que mudou nossas vidas",
-      date: "2019-07-08"
-    },
-    {
-      icon: "fas fa-star",
-      iconColor: "bg-yellow-500",
-      title: "Primeiro \"Eu te amo\"",
-      description: "Aquele momento mágico que selou nosso destino",
-      date: "2019"
-    },
-    {
-      icon: "fas fa-ring",
-      iconColor: "bg-purple-500",
-      title: "Momentos Especiais",
-      description: "Cada dia ao seu lado é uma nova aventura",
-      date: "Sempre"
-    }
-  ];
+interface MemoryTimelineProps {
+  memories: Array<{
+    icon: string;
+    iconColor: string;
+    title: string;
+    description: string;
+    date: string;
+  }>;
+}
+
+export function MemoryTimeline({ memories }: MemoryTimelineProps) {
 
   return (
     <section className="px-4 mb-12">
